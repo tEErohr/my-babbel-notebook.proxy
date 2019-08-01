@@ -1,6 +1,6 @@
 const superagent = require('superagent')
-const base64 = require('./base64')
-const { getFaviconURL } = require('./favicon')
+const base64 = require('../base64')
+const { getFaviconURL } = require('../favicon')
 
 module.exports = async function(req, res, next) {
   const { url } = req.query
