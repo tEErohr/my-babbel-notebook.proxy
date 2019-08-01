@@ -5,7 +5,7 @@ function filterMetadata({ name, content }) {
   return content.length > 2
 }
 
-function getMetadata(html) {
+function getMetadataFromHTML(html) {
   const doc = new JSDOM(html)
   const metadata = Array.from(doc.window.document.querySelectorAll('meta'))
     .map(node => {
@@ -19,5 +19,5 @@ function getMetadata(html) {
 }
 
 module.exports = {
-  getMetadata
+  getMetadataFromHTML
 }
