@@ -1,7 +1,9 @@
 const axios = require('axios')
 const express = require('express')
 const cors = require('cors')
+const base64 = require('./base64')
 const { getMetadataFromHTML } = require('./meta')
+const proxyRequest = require('./proxy-request')
 
 const logRequest = (req, res, next) => {
   console.log('[%s] %s', req.method, req.originalUrl)
@@ -11,9 +13,10 @@ const logRequest = (req, res, next) => {
 const createServer = (port = 9090) => {
   const app = express()
   app.use(cors())
+  app.get('/fetch', logRequest, proxyRequest)
   app.get('/metadata', logRequest, (req, res, next) => {
     const { url } = req.query
-    const decoded = Buffer.from(url, 'base64').toString('utf8')
+    const decoded = base64.decode(url)
     axios
       .get(decoded)
       .then(response => {

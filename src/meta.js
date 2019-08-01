@@ -1,4 +1,6 @@
+const urlUtil = require('url')
 const jsdom = require('jsdom')
+
 const { JSDOM } = jsdom
 
 function filterMetadata({ name, content }) {
