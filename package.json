@@ -4,7 +4,8 @@
   "description": "proxy for fetching meta data",
   "main": "index.js",
   "scripts": {
-    "start": "node src/start.js"
+    "start": "node src/start.js",
+    "dev": "nodemon -w src -e js -x 'npm start'"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsdom": "^15.1.1",
+    "nodemon": "^1.19.1",
     "superagent": "^5.1.0"
   }
 }
